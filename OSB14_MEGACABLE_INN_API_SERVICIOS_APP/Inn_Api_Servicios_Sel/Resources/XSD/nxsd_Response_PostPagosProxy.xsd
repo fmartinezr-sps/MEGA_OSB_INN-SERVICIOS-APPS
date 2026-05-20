@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns="http://TargetNamespace.com/Inn_Servicios_Sel_Pagos_PostPagosProxy_response"
+            targetNamespace="http://TargetNamespace.com/Inn_Servicios_Sel_Pagos_PostPagosProxy_response"
+            nxsd:version="JSON"
+            nxsd:encoding="UTF-8"
+            elementFormDefault="qualified">
+
+  <xsd:element name="Root-Element">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="payment" type="xsd:string"/>
+        <xsd:element name="data">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="status" type="xsd:string"/>
+              <xsd:element name="message" type="xsd:string"/>
+              <xsd:element name="reference" type="xsd:string"/>
+              <xsd:element name="folio" type="xsd:string"/>
+              <xsd:element name="operation" type="xsd:string"/>
+              <xsd:element name="autorization" type="xsd:string"/>
+              <xsd:element name="titularTarjeta" type="xsd:string"/>
+              <xsd:element name="tipoTarjeta" type="xsd:string"/>
+              <xsd:element name="numeroTarjeta" type="xsd:string"/>
+              <xsd:element name="vencimientoTarjeta" type="xsd:string"/>
+              <xsd:element name="totalCompra" type="xsd:string"/>
+              <xsd:element name="fechaCompra" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:annotation xmlns=""><xsd:appinfo>NXSDSAMPLE=</xsd:appinfo><xsd:appinfo>USEHEADER=false</xsd:appinfo></xsd:annotation>
+</xsd:schema>

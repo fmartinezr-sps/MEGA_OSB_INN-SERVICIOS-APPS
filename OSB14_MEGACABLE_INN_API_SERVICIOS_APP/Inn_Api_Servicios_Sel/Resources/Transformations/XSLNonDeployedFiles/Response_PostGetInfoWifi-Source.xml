@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GetInfoWifiResponse xmlns="http://xmlns.oracle.com/inn/serviciosweb/types">
+   <status>SUCCESS</status>
+   <message>Información encontrada</message>
+   <intentos_disponibles></intentos_disponibles>
+   <migrado_ACS>false</migrado_ACS>
+   <data>
+      <Tipo_Wifi>WiFi 2.4Ghz</Tipo_Wifi>
+      <Id_suscriptor></Id_suscriptor>
+      <Id_sistema></Id_sistema>
+      <estado_modem>UP</estado_modem>
+      <Parametros>
+         <nombre>SSID</nombre>
+         <valor>MEGACABLE-2.4G-7CA4</valor>
+      </Parametros>
+      <Parametros>
+         <nombre>Enable</nombre>
+         <valor>true</valor>
+      </Parametros>
+   </data>
+   <data>
+      <Tipo_Wifi>WiFi 5Ghz</Tipo_Wifi>
+      <Id_suscriptor></Id_suscriptor>
+      <Id_sistema></Id_sistema>
+      <estado_modem>UP</estado_modem>
+      <Parametros>
+         <nombre>SSID</nombre>
+         <valor>MEGACABLE-5G-7CA4</valor>
+      </Parametros>
+      <Parametros>
+         <nombre>Enable</nombre>
+         <valor>true</valor>
+      </Parametros>
+   </data>
+</GetInfoWifiResponse>

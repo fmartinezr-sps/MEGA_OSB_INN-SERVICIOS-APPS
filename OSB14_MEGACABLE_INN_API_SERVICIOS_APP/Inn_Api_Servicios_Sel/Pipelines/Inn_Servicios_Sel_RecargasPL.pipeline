@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:coreEntry>
+        <con:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType">
+            <con:wsdl ref="Inn_Api_Servicios_Sel/Resources/WSDL/Inn_Servicios_Sel_Recargas"/>
+            <con:binding>
+                <con:name>Inn_Servicios_Sel_Recargas_ptt-binding</con:name>
+                <con:namespace>http://xmlns.oracle.com/Inn_api_servicios_sel_OSB/Inn_Api_Servicios_Sel/Inn_Servicios_Sel_Recargas</con:namespace>
+            </con:binding>
+        </con:binding>
+        <con:xqConfiguration>
+            <con:snippetVersion>1.0</con:snippetVersion>
+        </con:xqConfiguration>
+    </con:coreEntry>
+    <con:router>
+        <!--==================== GetPaquetesRecarga ====================-->
+        <con:pipeline type="request" name="request-get-paquetes-req">
+            <con:stage id="_StageId-rec-paquetes-req-01" name="StageGetPaquetesRecargaReq">
+                <con:context/>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-rec-paquetes-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound/ctx:transport/ctx:request/http:query-parameters</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>GetPaquetesRecargaIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-rec-paquetes-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_GetPaquetesRecarga"/>
+                                <con2:input>$body</con2:input>
+                                <con2:param name="numero">
+                                    <con2:path>$inbound/ctx:transport/ctx:request/http:query-parameters/http:parameter[@name='numero']/@value</con2:path>
+                                </con2:param>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-rec-paquetes-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>GetPaquetesRecarga</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-rec-paquetes-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>GetPaquetesRecargaOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-get-paquetes-res">
+            <con:stage id="_StageId-rec-paquetes-res-01" name="StageGetPaquetesRecargaRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_GetPaquetesRecarga_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-rec-paquetes-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_GetPaquetesRecarga"/>
+                                <con2:input>$body/*</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== Recargar ====================-->
+        <con:pipeline type="request" name="request-recargar-req">
+            <con:stage id="_StageId-rec-recargar-req-01" name="StageRecargarReq">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_Recargar_request" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-rec-recargar-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>RecargarIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-rec-recargar-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_Recargar"/>
+                                <con2:input>$body/inn:Root-Element</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-rec-recargar-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>Recargar</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-rec-recargar-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>RecargarOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-recargar-res">
+            <con:stage id="_StageId-rec-recargar-res-01" name="StageRecargarRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_Recargar_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-rec-recargar-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_Recargar"/>
+                                <con2:input>$body/*</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== Flow Router ====================-->
+        <con:flow>
+            <con:branch-node type="operation" id="_FlowId-rec-branch-01" name="BranchNode1">
+                <con:context/>
+                <con:branch-table>
+                    <con:branch name="GetPaquetesRecarga">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline GetPaquetesRecarga">
+                                <con:request>request-get-paquetes-req</con:request>
+                                <con:response>response-get-paquetes-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="Recargar">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline Recargar">
+                                <con:request>request-recargar-req</con:request>
+                                <con:response>response-recargar-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:default-branch>
+                        <con:flow/>
+                    </con:default-branch>
+                </con:branch-table>
+            </con:branch-node>
+        </con:flow>
+        <con:partner-links>
+            <con:partner-link>
+                <con:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            </con:partner-link>
+        </con:partner-links>
+    </con:router>
+</con:pipelineEntry>

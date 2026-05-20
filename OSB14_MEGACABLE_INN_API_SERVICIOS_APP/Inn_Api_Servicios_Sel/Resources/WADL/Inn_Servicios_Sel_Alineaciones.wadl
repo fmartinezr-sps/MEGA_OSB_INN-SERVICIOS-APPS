@@ -1,0 +1,57 @@
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://TargetNamespace.com/Inn_Servicios_Sel_Alineaciones_GetSucursales_response" xmlns:ns2="http://TargetNamespace.com/Inn_Servicios_Sel_Alineaciones_GetCategorias_response" xmlns:ns3="http://TargetNamespace.com/Inn_Servicios_Sel_Alineaciones_GetPaquetes_response" xmlns:ns4="http://TargetNamespace.com/Inn_Servicios_Sel_Alineaciones_GetCanales_response" xmlns="http://wadl.dev.java.net/2009/02">
+
+  <doc title="Inn_Servicios_Sel_Alineaciones">RestService</doc>
+
+  <grammars>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Alineaciones_GetSucursales_response" schemaLocation="../XSD/nxsd_Response_GetSucursales.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Alineaciones_GetCategorias_response" schemaLocation="../XSD/nxsd_Response_GetCategorias.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Alineaciones_GetPaquetes_response" schemaLocation="../XSD/nxsd_Response_GetPaquetes.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Alineaciones_GetCanales_response" schemaLocation="../XSD/nxsd_Response_GetCanales.xsd"/>
+    </xsd:schema>
+  </grammars>
+
+  <resources>
+    <resource path="/sucursales">
+      <method name="GET" soa:wsdlOperation="GetSucursales">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Alineaciones_GetSucursales_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/categorias">
+      <method name="GET" soa:wsdlOperation="GetCategorias">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Alineaciones_GetCategorias_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/paquetes">
+      <method name="GET" soa:wsdlOperation="GetPaquetes">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Alineaciones_GetPaquetes_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/canales">
+      <method name="GET" soa:wsdlOperation="GetCanales">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Alineaciones_GetCanales_response"/>
+        </response>
+      </method>
+    </resource>
+  </resources>
+</application>

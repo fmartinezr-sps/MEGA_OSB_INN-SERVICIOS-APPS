@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+           xmlns:tns="http://TargetNamespace.com/Inn_Servicios_Sel_Servicios_ContratarMegamovil_response"
+           targetNamespace="http://TargetNamespace.com/Inn_Servicios_Sel_Servicios_ContratarMegamovil_response"
+           elementFormDefault="qualified" attributeFormDefault="unqualified"
+           nxsd:version="JSON" nxsd:stream="chars" nxsd:encoding="UTF-8">
+  <xs:element name="Root-Element">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="estatus" type="xs:string"/>
+        <xs:element name="error" type="xs:string"/>
+        <xs:element name="mensaje" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

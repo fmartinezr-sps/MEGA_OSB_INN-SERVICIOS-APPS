@@ -1,0 +1,299 @@
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns2="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostAccesosVencidos_request" xmlns:ns0="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostLogin_request" xmlns:ns3="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostaddNewSuscriptor_request" xmlns:ns4="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostforgotPassword_request" xmlns:ns1="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetPagosRecientes_request" xmlns="http://wadl.dev.java.net/2009/02">
+   <doc title="Inn_Servicios_Sel_Suscriptor">RestService</doc>
+   <grammars>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostLogin_request" schemaLocation="../XSD/nxsd_Request_PostLogin.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostLogin_response" schemaLocation="../XSD/nxsd_Response_PostLogin.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostLoginnuevo_response" schemaLocation="../XSD/nxsd_Response_PostlLoginnuevo.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostLoginnuevo_fault" schemaLocation="../XSD/nxsd_ErrorResponse_PostLoginnuevo.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Postauth_response" schemaLocation="../XSD/nxsd_Response_Postauth.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Postauth_fault" schemaLocation="../XSD/nxsd_ErrorResponse_Postauth1.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetValidasuscriptor_response" schemaLocation="../XSD/nxsd_Response_GetValidasuscriptor.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetSuscriptor_response" schemaLocation="../XSD/nxsd_Response_GetSuscriptor.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetLlamadas_response" schemaLocation="../XSD/nxsd_Response_GetLlamadas.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetPeriodos_response" schemaLocation="../XSD/nxsd_Response_GetPeriodos.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetPeriodos_fault" schemaLocation="../XSD/nxsd_ErrorReponse_GetPeriodos.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Getanismvno_response" schemaLocation="../XSD/nxsd_Response_GetAnismnvo.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Getanismvno_fault" schemaLocation="../XSD/nxsd_ErrorResponse_GetAnismnvo.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetConsumos_response" schemaLocation="../XSD/nxsd_Response_GetConsumos.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetConsumos_fault" schemaLocation="../XSD/nxsd_ErrorResponse_GetConsumos.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Operation1_response" schemaLocation="../XSD/nxsd_Response_GetRecargas.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetPagoReciente_response" schemaLocation="../XSD/nxsd_Response_GetPagosRecientes.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetPagoReciente_fault" schemaLocation="../XSD/nxsd_ErrorResponse_GetPagoReciente.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Gettracking_ot_response" schemaLocation="../XSD/nxsd_Response_Gettracking_ot.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostAccesosVencidos_request" schemaLocation="../XSD/nxsd_Request_PostAccesosvencidos.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostAccesosVencidos_response" schemaLocation="../XSD/nxsd_Response_PostAccesosvecidos.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostaddNewSuscriptor_request" schemaLocation="../XSD/nxsd_Request_PostaddNewSuscriptor.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostaddNewSuscriptor_response" schemaLocation="../XSD/nxsd_Response_PostaddNewSuscriptor.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostforgotPassword_request" schemaLocation="../XSD/nxsd_Request_PostforgotPassword.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostforgotPassword_response" schemaLocation="../XSD/nxsd_Response_PostforgotPassword.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostPaymentDetails_response" schemaLocation="../XSD/nxsd_Response_GetPaymentDetails.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostLogin_fault" schemaLocation="../XSD/nxsd_ErrorResponse_PostLogin.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetValidasuscriptor_fault" schemaLocation="../XSD/nxsd_ErrorResponse_GetValidasuscriptor.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetSuscriptor_fault" schemaLocation="../XSD/nxsd_ErrorResponse_GetSuscriptor.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetLlamadas_fault" schemaLocation="../XSD/nxsd_ErrorResponse_GetLlamadas.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetRecargas_fault" schemaLocation="../XSD/nxsd_ErrorResponse_GetRecargas.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Gettracking_ot_fault" schemaLocation="../XSD/nxsd_ErrorResponse_Gettracking_ot.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostAccesosVencidos_fault" schemaLocation="../XSD/nxsd_ErrorResponse_PostAccesosVencidos.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostaddNewSuscriptor_fault" schemaLocation="../XSD/nxsd_ErrorResponse_PostaddNewSuscriptor.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostforgotPassword_fault" schemaLocation="../XSD/nxsd_ErrorResponse_PostforgotPassword.xsd"/>
+        </xsd:schema>
+      <xsd:schema>
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostPaymentDetails_fault" schemaLocation="../XSD/nxsd_ErrorResponse_PostPaymentDetails.xsd"/>
+        </xsd:schema>
+   </grammars>
+   <resources>
+      <resource path="/login">
+         <method name="POST" soa:wsdlOperation="PostLogin">
+            <request>
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostLogin_request"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostLogin_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostLogin_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/loginnuevo">
+         <method name="POST" soa:wsdlOperation="PostLoginnuevo">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostLoginnuevo_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostLoginnuevo_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/auth">
+         <method name="POST" soa:wsdlOperation="Postauth">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Postauth_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Postauth_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/validaSuscriptor">
+         <method name="GET" soa:wsdlOperation="GetValidasuscriptor">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetValidasuscriptor_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetValidasuscriptor_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/suscriptor">
+         <method name="GET" soa:wsdlOperation="GetSuscriptor">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetSuscriptor_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetSuscriptor_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/llamadas">
+         <method name="GET" soa:wsdlOperation="GetLlamadas">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetLlamadas_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetLlamadas_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/periodos">
+         <method name="GET" soa:wsdlOperation="GetPeriodos">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetPeriodos_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetPeriodos_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/anismvno">
+         <method name="GET" soa:wsdlOperation="Getanismvno">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Getanismvno_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Getanismvno_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/getConsumos">
+         <method name="GET" soa:wsdlOperation="GetConsumos">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetConsumos_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetConsumos_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/getRecargas">
+         <method name="GET" soa:wsdlOperation="GetRecargas">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Operation1_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetRecargas_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/pagoReciente">
+         <method name="GET" soa:wsdlOperation="GetPagoReciente">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetPagoReciente_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetPagoReciente_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/tracking_ot">
+         <method name="GET" soa:wsdlOperation="Gettracking_ot">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Gettracking_ot_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Gettracking_ot_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/accesosVencidos">
+         <method name="POST" soa:wsdlOperation="PostAccesosVencidos">
+            <request>
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostAccesosVencidos_request"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostAccesosVencidos_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostAccesosVencidos_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/addNewSuscriptor">
+         <method name="POST" soa:wsdlOperation="PostaddNewSuscriptor">
+            <request>
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostaddNewSuscriptor_request"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostaddNewSuscriptor_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostaddNewSuscriptor_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/forgotPassword">
+         <method name="POST" soa:wsdlOperation="PostforgotPassword">
+            <request>
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostforgotPassword_request"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostforgotPassword_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostforgotPassword_fault"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/getPaymentDetails">
+         <method name="GET" soa:wsdlOperation="PostPaymentDetails">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostPaymentDetails_response"/>
+            </response>
+            <response status="500" soa:wsdlFaultName="fault">
+               <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_PostPaymentDetails_fault"/>
+            </response>
+         </method>
+      </resource>
+   </resources>
+</application>

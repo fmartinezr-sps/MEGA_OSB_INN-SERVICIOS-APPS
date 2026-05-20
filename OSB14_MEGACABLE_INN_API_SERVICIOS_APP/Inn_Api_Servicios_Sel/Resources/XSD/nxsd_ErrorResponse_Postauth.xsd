@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Postauth_fault" targetNamespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Postauth_fault" elementFormDefault="qualified" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" nxsd:version="JSON" nxsd:encoding="UTF-8">
+   <xsd:element name="Root-Element">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="status" type="xsd:string"/>
+            <xsd:element name="code" type="xsd:integer"/>
+            <xsd:element name="description" type="xsd:string"/>
+            <xsd:element name="IdSuscriptor" type="xsd:string"/>
+            <xsd:element name="vencido" type="xsd:integer"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+<xsd:annotation xmlns="">
+      <xsd:appinfo>NXSDSAMPLE=</xsd:appinfo>
+      <xsd:appinfo>USEHEADER=false</xsd:appinfo>
+   </xsd:annotation>
+</xsd:schema>

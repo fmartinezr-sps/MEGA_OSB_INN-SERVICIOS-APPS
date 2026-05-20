@@ -1,0 +1,41 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<tns:Root-Element xmlns:BasicCredentialsUserFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.BasicCredentialsUserFunction" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" xmlns:RuntimeTypeConversionFunctions="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.RuntimeTypeConversionFunctions" xmlns:DVMFunctions="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.functions.dvm.DVMFunctions" xmlns:oraxsl="http://www.oracle.com/XSL/Transform/java" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:UUIDUserFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.UUIDUserFunction" xmlns:XrefFunctions="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.functions.xref.XrefFunctions" xmlns:xdb="http://xmlns.oracle.com/xdb" xmlns:IsUserInGroupFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.IsUserInGroupFunction" xmlns:IsUserInRoleFunction="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.stages.functions.IsUserInRoleFunction" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:tns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetInfoWifi_response" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetInfoWifi_response file:/C:/JDeveloper/mywork/Inn_api_servicios_sel_OSB/Inn_Api_Servicios_Sel/Resources/XSD/nxsd_Response_PostGetInfoWifi.xsd">
+   <tns:status>SUCCESS</tns:status>
+   <tns:message>Información encontrada</tns:message>
+   <tns:intentos_disponibles/>
+   <tns:migrado_ACS>false</tns:migrado_ACS>
+   <tns:data>
+      <tns:item>
+         <tns:Tipo_Wifi>WiFi 2.4Ghz</tns:Tipo_Wifi>
+         <tns:Id_suscriptor/>
+         <tns:Id_sistema/>
+         <tns:estado_modem>UP</tns:estado_modem>
+         <tns:Parametros>
+            <tns:item>
+               <tns:nombre>SSID</tns:nombre>
+               <tns:valor>MEGACABLE-2.4G-7CA4</tns:valor>
+            </tns:item>
+            <tns:item>
+               <tns:nombre>Enable</tns:nombre>
+               <tns:valor>true</tns:valor>
+            </tns:item>
+         </tns:Parametros>
+      </tns:item>
+      <tns:item>
+         <tns:Tipo_Wifi>WiFi 5Ghz</tns:Tipo_Wifi>
+         <tns:Id_suscriptor/>
+         <tns:Id_sistema/>
+         <tns:estado_modem>UP</tns:estado_modem>
+         <tns:Parametros>
+            <tns:item>
+               <tns:nombre>SSID</tns:nombre>
+               <tns:valor>MEGACABLE-5G-7CA4</tns:valor>
+            </tns:item>
+            <tns:item>
+               <tns:nombre>Enable</tns:nombre>
+               <tns:valor>true</tns:valor>
+            </tns:item>
+         </tns:Parametros>
+      </tns:item>
+   </tns:data>
+</tns:Root-Element>

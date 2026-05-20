@@ -1,0 +1,54 @@
+<wsdl:definitions name="Inn_Servicios_Sel_Recargas" targetNamespace="http://xmlns.oracle.com/Inn_api_servicios_sel_OSB/Inn_Api_Servicios_Sel/Inn_Servicios_Sel_Recargas" xmlns:tns="http://xmlns.oracle.com/Inn_api_servicios_sel_OSB/Inn_Api_Servicios_Sel/Inn_Servicios_Sel_Recargas" xmlns:inp1="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_GetPaquetesRecarga_response" xmlns:inp2="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_Recargar_request" xmlns:inp3="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_Recargar_response" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <plnk:partnerLinkType name="Inn_Servicios_Sel_Recargas">
+        <plnk:role name="Inn_Servicios_Sel_RecargasProvider" portType="tns:Inn_Servicios_Sel_Recargas_ptt"/>
+    </plnk:partnerLinkType>
+
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_GetPaquetesRecarga_response" schemaLocation="../XSD/nxsd_Response_GetPaquetesRecarga.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_Recargar_request" schemaLocation="../XSD/nxsd_Request_Recargar.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_Recargar_response" schemaLocation="../XSD/nxsd_Response_Recargar.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="GetPaquetesRecarga_outputMessage">
+        <wsdl:part name="reply" element="inp1:Root-Element"/>
+    </wsdl:message>
+    <wsdl:message name="Recargar_inputMessage">
+        <wsdl:part name="request" element="inp2:Root-Element"/>
+    </wsdl:message>
+    <wsdl:message name="Recargar_outputMessage">
+        <wsdl:part name="reply" element="inp3:Root-Element"/>
+    </wsdl:message>
+    <wsdl:message name="Rest_EmptyMessage"/>
+
+    <wsdl:portType name="Inn_Servicios_Sel_Recargas_ptt">
+        <wsdl:operation name="GetPaquetesRecarga">
+            <wsdl:input message="tns:Rest_EmptyMessage"/>
+            <wsdl:output message="tns:GetPaquetesRecarga_outputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="Recargar">
+            <wsdl:input message="tns:Recargar_inputMessage"/>
+            <wsdl:output message="tns:Recargar_outputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="Inn_Servicios_Sel_Recargas_ptt-binding" type="tns:Inn_Servicios_Sel_Recargas_ptt">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetPaquetesRecarga">
+            <soap:operation soapAction="GetPaquetesRecarga"/>
+            <wsdl:input><soap:body use="literal"/></wsdl:input>
+            <wsdl:output><soap:body use="literal"/></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Recargar">
+            <soap:operation soapAction="Recargar"/>
+            <wsdl:input><soap:body use="literal"/></wsdl:input>
+            <wsdl:output><soap:body use="literal"/></wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+</wsdl:definitions>

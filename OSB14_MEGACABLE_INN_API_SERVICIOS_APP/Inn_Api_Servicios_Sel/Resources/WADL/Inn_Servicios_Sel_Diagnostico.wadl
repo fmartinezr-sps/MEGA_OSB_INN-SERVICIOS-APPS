@@ -1,0 +1,171 @@
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_GetIncognito_response" xmlns:ns2="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_GetSkyline_response" xmlns:ns3="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_ConsultaNiveles_response" xmlns:ns4="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_GetDique_response" xmlns:ns5="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostReaprovisionarEquipo_request" xmlns:ns6="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostReaprovisionarEquipo_response" xmlns:ns7="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetOrdenesTrabajo_request" xmlns:ns8="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetOrdenesTrabajo_response" xmlns:ns9="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostRefresh_request" xmlns:ns10="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostRefresh_response" xmlns:ns11="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetInfoWifi_request" xmlns:ns12="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetInfoWifi_response" xmlns:ns13="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostUpdateRedWifi_request" xmlns:ns14="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostUpdateRedWifi_response" xmlns:ns15="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostActivateRedWifi_request" xmlns:ns16="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostActivateRedWifi_response" xmlns:ns17="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostReiniciarEquipo_response" xmlns="http://wadl.dev.java.net/2009/02">
+
+  <doc title="Inn_Servicios_Sel_Diagnostico">RestService</doc>
+
+  <grammars>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_GetIncognito_response" schemaLocation="../XSD/nxsd_Response_GetIncognito.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_GetSkyline_response" schemaLocation="../XSD/nxsd_Response_GetSkyline.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_ConsultaNiveles_response" schemaLocation="../XSD/nxsd_Response_ConsultaNiveles.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_GetDique_response" schemaLocation="../XSD/nxsd_Response_GetDique.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostReaprovisionarEquipo_request" schemaLocation="../XSD/nxsd_Request_PostReaprovisionarEquipo.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostReaprovisionarEquipo_response" schemaLocation="../XSD/nxsd_Response_PostReaprovisionarEquipo.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetOrdenesTrabajo_request" schemaLocation="../XSD/nxsd_Request_PostGetOrdenesTrabajo.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetOrdenesTrabajo_response" schemaLocation="../XSD/nxsd_Response_PostGetOrdenesTrabajo.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostRefresh_request" schemaLocation="../XSD/nxsd_Request_PostRefresh.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostRefresh_response" schemaLocation="../XSD/nxsd_Response_PostRefresh.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetInfoWifi_request" schemaLocation="../XSD/nxsd_Request_PostGetInfoWifi.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetInfoWifi_response" schemaLocation="../XSD/nxsd_Response_PostGetInfoWifi.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostUpdateRedWifi_request" schemaLocation="../XSD/nxsd_Request_PostUpdateRedWifi.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostUpdateRedWifi_response" schemaLocation="../XSD/nxsd_Response_PostUpdateRedWifi.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostActivateRedWifi_request" schemaLocation="../XSD/nxsd_Request_PostActivateRedWifi.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostActivateRedWifi_response" schemaLocation="../XSD/nxsd_Response_PostActivateRedWifi.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostReiniciarEquipo_response" schemaLocation="../XSD/nxsd_Response_PostReiniciarEquipo.xsd"/>
+    </xsd:schema>
+  </grammars>
+
+  <resources>
+    <resource path="/api/InnServiciosSel/diagnostico/incognito">
+      <method name="GET" soa:wsdlOperation="GetIncognito">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_GetIncognito_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/diagnostico/skyline">
+      <method name="GET" soa:wsdlOperation="GetSkyline">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_GetSkyline_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/diagnostico/consulta_niveles">
+      <method name="GET" soa:wsdlOperation="ConsultaNiveles">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_ConsultaNiveles_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/diagnostico/dique">
+      <method name="GET" soa:wsdlOperation="GetDique">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_GetDique_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/diagnostico/reaprovisionarEquipo">
+      <method name="POST" soa:wsdlOperation="PostReaprovisionarEquipo">
+        <request>
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostReaprovisionarEquipo_request"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostReaprovisionarEquipo_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/diagnostico/getOrdenesTrabajo">
+      <method name="POST" soa:wsdlOperation="PostGetOrdenesTrabajo">
+        <request>
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetOrdenesTrabajo_request"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetOrdenesTrabajo_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/diagnostico/refresh">
+      <method name="POST" soa:wsdlOperation="PostRefresh">
+        <request>
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostRefresh_request"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostRefresh_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/diagnostico/get_info_wifi">
+      <method name="POST" soa:wsdlOperation="PostGetInfoWifi">
+        <request>
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetInfoWifi_request"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetInfoWifi_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/diagnostico/update_red_wifi">
+      <method name="POST" soa:wsdlOperation="PostUpdateRedWifi">
+        <request>
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostUpdateRedWifi_request"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostUpdateRedWifi_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/diagnostico/activate_red_wifi">
+      <method name="POST" soa:wsdlOperation="PostActivateRedWifi">
+        <request>
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostActivateRedWifi_request"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostActivateRedWifi_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/diagnostico/reiniciarEquipo">
+      <method name="POST" soa:wsdlOperation="PostReiniciarEquipo">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostReiniciarEquipo_response"/>
+        </response>
+      </method>
+    </resource>
+  </resources>
+</application>

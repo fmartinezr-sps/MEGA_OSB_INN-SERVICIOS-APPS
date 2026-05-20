@@ -1,0 +1,67 @@
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_ListadoPortabilidades_response" xmlns:ns2="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_PortarLinea_request" xmlns:ns3="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_PortarLinea_response" xmlns:ns4="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_ActualizarDatosPortabilidad_request" xmlns:ns5="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_ActualizarDatosPortabilidad_response" xmlns:ns6="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_ValidarPortabilidad_response" xmlns="http://wadl.dev.java.net/2009/02">
+
+  <doc title="Inn_Servicios_Sel_Portabilidad">RestService</doc>
+
+  <grammars>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_ListadoPortabilidades_response" schemaLocation="../XSD/nxsd_Response_ListadoPortabilidades.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_PortarLinea_request" schemaLocation="../XSD/nxsd_Request_PortarLinea.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_PortarLinea_response" schemaLocation="../XSD/nxsd_Response_PortarLinea.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_ActualizarDatosPortabilidad_request" schemaLocation="../XSD/nxsd_Request_ActualizarDatosPortabilidad.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_ActualizarDatosPortabilidad_response" schemaLocation="../XSD/nxsd_Response_ActualizarDatosPortabilidad.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_ValidarPortabilidad_response" schemaLocation="../XSD/nxsd_Response_ValidarPortabilidad.xsd"/>
+    </xsd:schema>
+  </grammars>
+
+  <resources>
+    <resource path="/listadoPortabilidades">
+      <method name="GET" soa:wsdlOperation="ListadoPortabilidades">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_ListadoPortabilidades_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/portar-linea">
+      <method name="POST" soa:wsdlOperation="PortarLinea">
+        <request>
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_PortarLinea_request"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_PortarLinea_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/actualizaDatos-portar-linea">
+      <method name="POST" soa:wsdlOperation="ActualizarDatosPortabilidad">
+        <request>
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_ActualizarDatosPortabilidad_request"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_ActualizarDatosPortabilidad_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/valida-portabilidad">
+      <method name="GET" soa:wsdlOperation="ValidarPortabilidad">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Portabilidad_ValidarPortabilidad_response"/>
+        </response>
+      </method>
+    </resource>
+  </resources>
+</application>

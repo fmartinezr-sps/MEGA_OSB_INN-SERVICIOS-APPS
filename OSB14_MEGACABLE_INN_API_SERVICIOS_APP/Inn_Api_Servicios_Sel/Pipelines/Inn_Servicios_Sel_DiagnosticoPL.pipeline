@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:coreEntry>
+        <con:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType">
+            <con:wsdl ref="Inn_Api_Servicios_Sel/Resources/WSDL/Inn_Servicios_Sel_Diagnostico"/>
+            <con:binding>
+                <con:name>Inn_Servicios_Sel_Diagnostico_ptt-binding</con:name>
+                <con:namespace>http://xmlns.oracle.com/Inn_api_servicios_sel_OSB/Inn_Api_Servicios_Sel/Inn_Servicios_Sel_Diagnostico</con:namespace>
+            </con:binding>
+        </con:binding>
+        <con:xqConfiguration>
+            <con:snippetVersion>1.0</con:snippetVersion>
+        </con:xqConfiguration>
+    </con:coreEntry>
+    <con:router>
+        <!--==================== GetIncognito ====================-->
+        <con:pipeline type="request" name="request-get-incognito-req">
+            <con:stage id="_StageId-diag-incognito-req-01" name="StageGetIncognitoReq">
+                <con:context/>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-incognito-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound/ctx:transport/ctx:request/http:query-parameters</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>GetIncognitoIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-incognito-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_GetIncognito"/>
+                                <con2:input>$body</con2:input>
+                                <con2:param name="suscriptor">
+                                    <con2:path>$inbound/ctx:transport/ctx:request/http:query-parameters/http:parameter[@name='suscriptor']/@value</con2:path>
+                                </con2:param>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-incognito-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>GetIncognito</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-incognito-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>GetIncognitoOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-get-incognito-res">
+            <con:stage id="_StageId-diag-incognito-res-01" name="StageGetIncognitoRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_GetIncognito_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-incognito-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_GetIncognito"/>
+                                <con2:input>(
+  $body/*[local-name()='part']/*[local-name()='GetIncognitoResponse'],
+  $body/*[local-name()='GetIncognitoResponse']
+)[1]</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== GetSkyline ====================-->
+        <con:pipeline type="request" name="request-get-skyline-req">
+            <con:stage id="_StageId-diag-skyline-req-01" name="StageGetSkylineReq">
+                <con:context/>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-skyline-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound/ctx:transport/ctx:request/http:query-parameters</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>GetSkylineIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-skyline-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_GetSkyline"/>
+                                <con2:input>$body</con2:input>
+                                <con2:param name="suscriptor">
+                                    <con2:path>$inbound/ctx:transport/ctx:request/http:query-parameters/http:parameter[@name='suscriptor']/@value</con2:path>
+                                </con2:param>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-skyline-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>GetSkyline</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-skyline-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>GetSkylineOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-get-skyline-res">
+            <con:stage id="_StageId-diag-skyline-res-01" name="StageGetSkylineRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_GetSkyline_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-skyline-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_GetSkyline"/>
+                                <con2:input>(
+  $body/*[local-name()='part']/*[local-name()='GetSkylineResponse'],
+  $body/*[local-name()='GetSkylineResponse']
+)[1]</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== ConsultaNiveles ====================-->
+        <con:pipeline type="request" name="request-consulta-niveles-req">
+            <con:stage id="_StageId-diag-cniveles-req-01" name="StageConsultaNivelesReq">
+                <con:context/>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-cniveles-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound/ctx:transport/ctx:request/http:query-parameters</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>ConsultaNivelesIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-cniveles-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_ConsultaNiveles"/>
+                                <con2:input>$body</con2:input>
+                                <con2:param name="suscriptor">
+                                    <con2:path>$inbound/ctx:transport/ctx:request/http:query-parameters/http:parameter[@name='suscriptor']/@value</con2:path>
+                                </con2:param>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-cniveles-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>ConsultaNiveles</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-cniveles-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>ConsultaNivelesOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-consulta-niveles-res">
+            <con:stage id="_StageId-diag-cniveles-res-01" name="StageConsultaNivelesRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_ConsultaNiveles_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-cniveles-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_ConsultaNiveles"/>
+                                <con2:input>(
+  $body/*[local-name()='part']/*[local-name()='ConsultaNivelesResponse'],
+  $body/*[local-name()='ConsultaNivelesResponse']
+)[1]</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== GetDique ====================-->
+        <con:pipeline type="request" name="request-get-dique-req">
+            <con:stage id="_StageId-diag-dique-req-01" name="StageGetDiqueReq">
+                <con:context/>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-dique-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound/ctx:transport/ctx:request/http:query-parameters</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>GetDiqueIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-dique-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_GetDique"/>
+                                <con2:input>$body</con2:input>
+                                <con2:param name="suscriptor">
+                                    <con2:path>$inbound/ctx:transport/ctx:request/http:query-parameters/http:parameter[@name='suscriptor']/@value</con2:path>
+                                </con2:param>
+                                <con2:param name="origen">
+                                    <con2:path>$inbound/ctx:transport/ctx:request/http:query-parameters/http:parameter[@name='origen']/@value</con2:path>
+                                </con2:param>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-dique-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>GetDique</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-dique-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>GetDiqueOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-get-dique-res">
+            <con:stage id="_StageId-diag-dique-res-01" name="StageGetDiqueRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_GetDique_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-dique-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_GetDique"/>
+                                <con2:input>(
+  $body/*[local-name()='part']/*[local-name()='GetDiqueResponse'],
+  $body/*[local-name()='GetDiqueResponse']
+)[1]</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== PostReaprovisionarEquipo ====================-->
+        <con:pipeline type="request" name="request-reaprovisionar-req">
+            <con:stage id="_StageId-diag-reaprov-req-01" name="StagePostReaprovisionarEquipoReq">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostReaprovisionarEquipo_request" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-reaprov-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostReaprovisionarEquipoIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-reaprov-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_PostReaprovisionarEquipo"/>
+                                <con2:input>$body/inn:Root-Element</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-reaprov-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>ReaprovisionarEquipo</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-reaprov-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostReaprovisionarEquipoOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-reaprovisionar-res">
+            <con:stage id="_StageId-diag-reaprov-res-01" name="StagePostReaprovisionarEquipoRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostReaprovisionarEquipo_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-reaprov-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_PostReaprovisionarEquipo"/>
+                                <con2:input>(
+  $body/*[local-name()='part']/*[local-name()='ReaprovisionarEquipoResponse'],
+  $body/*[local-name()='ReaprovisionarEquipoResponse']
+)[1]</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== PostGetOrdenesTrabajo ====================-->
+        <con:pipeline type="request" name="request-ordenes-trabajo-req">
+            <con:stage id="_StageId-diag-ordtrab-req-01" name="StagePostGetOrdenesTrabajoReq">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetOrdenesTrabajo_request" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-ordtrab-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostGetOrdenesTrabajoIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-ordtrab-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_PostGetOrdenesTrabajo"/>
+                                <con2:input>$body/inn:Root-Element</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-ordtrab-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>GetOrdenesTrabajo</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-ordtrab-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostGetOrdenesTrabajoOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-ordenes-trabajo-res">
+            <con:stage id="_StageId-diag-ordtrab-res-01" name="StagePostGetOrdenesTrabajoRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetOrdenesTrabajo_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-ordtrab-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_PostGetOrdenesTrabajo"/>
+                                <con2:input>(
+  $body/*[local-name()='part']/*[local-name()='GetOrdenesTrabajoResponse'],
+  $body/*[local-name()='GetOrdenesTrabajoResponse']
+)[1]</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== PostRefresh ====================-->
+        <con:pipeline type="request" name="request-refresh-req">
+            <con:stage id="_StageId-diag-refresh-req-01" name="StagePostRefreshReq">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostRefresh_request" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-refresh-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostRefreshIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-refresh-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_PostRefresh"/>
+                                <con2:input>$body/inn:Root-Element</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-refresh-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>Refresh</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-refresh-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostRefreshOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-refresh-res">
+            <con:stage id="_StageId-diag-refresh-res-01" name="StagePostRefreshRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostRefresh_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-refresh-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_PostRefresh"/>
+                                <con2:input>(
+  $body/*[local-name()='part']/*[local-name()='RefreshResponse'],
+  $body/*[local-name()='RefreshResponse']
+)[1]</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== PostGetInfoWifi ====================-->
+        <con:pipeline type="request" name="request-info-wifi-req">
+            <con:stage id="_StageId-diag-infowifi-req-01" name="StagePostGetInfoWifiReq">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetInfoWifi_request" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-infowifi-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostGetInfoWifiIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-infowifi-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_PostGetInfoWifi"/>
+                                <con2:input>$body/inn:Root-Element</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-infowifi-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>GetInfoWifi</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-infowifi-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostGetInfoWifiOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-info-wifi-res">
+            <con:stage id="_StageId-diag-infowifi-res-01" name="StagePostGetInfoWifiRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostGetInfoWifi_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-infowifi-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_PostGetInfoWifi"/>
+                                <con2:input>(
+  $body/*[local-name()='part']/*[local-name()='GetInfoWifiResponse'],
+  $body/*[local-name()='GetInfoWifiResponse']
+)[1]</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== PostUpdateRedWifi ====================-->
+        <con:pipeline type="request" name="request-update-red-wifi-req">
+            <con:stage id="_StageId-diag-updwifi-req-01" name="StagePostUpdateRedWifiReq">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostUpdateRedWifi_request" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-updwifi-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostUpdateRedWifiIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-updwifi-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_PostUpdateRedWifi"/>
+                                <con2:input>$body/inn:Root-Element</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-updwifi-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>UpdateRedWifi</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-updwifi-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostUpdateRedWifiOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-update-red-wifi-res">
+            <con:stage id="_StageId-diag-updwifi-res-01" name="StagePostUpdateRedWifiRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostUpdateRedWifi_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-updwifi-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_PostUpdateRedWifi"/>
+                                <con2:input>(
+  $body/*[local-name()='part']/*[local-name()='UpdateRedWifiResponse'],
+  $body/*[local-name()='UpdateRedWifiResponse']
+)[1]</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== PostActivateRedWifi ====================-->
+        <con:pipeline type="request" name="request-activate-red-wifi-req">
+            <con:stage id="_StageId-diag-actwifi-req-01" name="StagePostActivateRedWifiReq">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostActivateRedWifi_request" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-actwifi-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostActivateRedWifiIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-actwifi-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_PostActivateRedWifi"/>
+                                <con2:input>$body/inn:Root-Element</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-actwifi-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>ActivateRedWifi</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-actwifi-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostActivateRedWifiOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-activate-red-wifi-res">
+            <con:stage id="_StageId-diag-actwifi-res-01" name="StagePostActivateRedWifiRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostActivateRedWifi_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-actwifi-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_PostActivateRedWifi"/>
+                                <con2:input>(
+  $body/*[local-name()='part']/*[local-name()='ActivateRedWifiResponse'],
+  $body/*[local-name()='ActivateRedWifiResponse']
+)[1]</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== PostReiniciarEquipo ====================-->
+        <con:pipeline type="request" name="request-reiniciar-equipo-req">
+            <con:stage id="_StageId-diag-reiniciar-req-01" name="StagePostReiniciarEquipoReq">
+                <con:context/>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-reiniciar-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound/ctx:transport/ctx:request/http:query-parameters</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostReiniciarEquipoIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-reiniciar-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_PostReiniciarEquipo"/>
+                                <con2:input>$body</con2:input>
+                                <con2:param name="authorization">
+                                    <con2:path>$inbound/ctx:transport/ctx:request/tp:headers/tp:user-header[@name='Authorization']/@value</con2:path>
+                                </con2:param>
+                                <con2:param name="idSuscriptor">
+                                    <con2:path>$inbound/ctx:transport/ctx:request/http:query-parameters/http:parameter[@name='idSuscriptor']/@value</con2:path>
+                                </con2:param>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-reiniciar-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>ReiniciarEquipo</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-reiniciar-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>PostReiniciarEquipoOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-reiniciar-equipo-res">
+            <con:stage id="_StageId-diag-reiniciar-res-01" name="StagePostReiniciarEquipoRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Diagnostico_PostReiniciarEquipo_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-diag-reiniciar-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_PostReiniciarEquipo"/>
+                                <con2:input>(
+  $body/*[local-name()='part']/*[local-name()='ReiniciarEquipoResponse'],
+  $body/*[local-name()='ReiniciarEquipoResponse']
+)[1]</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== Flow Router ====================-->
+        <con:flow>
+            <con:branch-node type="operation" id="_FlowId-diag-branch-01" name="BranchNode1">
+                <con:context/>
+                <con:branch-table>
+                    <con:branch name="GetIncognito">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline GetIncognito">
+                                <con:request>request-get-incognito-req</con:request>
+                                <con:response>response-get-incognito-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="GetSkyline">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline GetSkyline">
+                                <con:request>request-get-skyline-req</con:request>
+                                <con:response>response-get-skyline-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="ConsultaNiveles">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline ConsultaNiveles">
+                                <con:request>request-consulta-niveles-req</con:request>
+                                <con:response>response-consulta-niveles-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="GetDique">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline GetDique">
+                                <con:request>request-get-dique-req</con:request>
+                                <con:response>response-get-dique-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="PostReaprovisionarEquipo">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline PostReaprovisionarEquipo">
+                                <con:request>request-reaprovisionar-req</con:request>
+                                <con:response>response-reaprovisionar-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="PostGetOrdenesTrabajo">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline PostGetOrdenesTrabajo">
+                                <con:request>request-ordenes-trabajo-req</con:request>
+                                <con:response>response-ordenes-trabajo-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="PostRefresh">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline PostRefresh">
+                                <con:request>request-refresh-req</con:request>
+                                <con:response>response-refresh-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="PostGetInfoWifi">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline PostGetInfoWifi">
+                                <con:request>request-info-wifi-req</con:request>
+                                <con:response>response-info-wifi-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="PostUpdateRedWifi">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline PostUpdateRedWifi">
+                                <con:request>request-update-red-wifi-req</con:request>
+                                <con:response>response-update-red-wifi-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="PostActivateRedWifi">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline PostActivateRedWifi">
+                                <con:request>request-activate-red-wifi-req</con:request>
+                                <con:response>response-activate-red-wifi-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="PostReiniciarEquipo">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline PostReiniciarEquipo">
+                                <con:request>request-reiniciar-equipo-req</con:request>
+                                <con:response>response-reiniciar-equipo-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:default-branch>
+                        <con:flow/>
+                    </con:default-branch>
+                </con:branch-table>
+            </con:branch-node>
+        </con:flow>
+        <con:partner-links>
+            <con:partner-link>
+                <con:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            </con:partner-link>
+        </con:partner-links>
+    </con:router>
+</con:pipelineEntry>

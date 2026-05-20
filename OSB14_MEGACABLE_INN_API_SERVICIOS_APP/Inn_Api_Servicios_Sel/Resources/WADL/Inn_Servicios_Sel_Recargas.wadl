@@ -1,0 +1,38 @@
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_GetPaquetesRecarga_response" xmlns:ns2="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_Recargar_request" xmlns:ns3="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_Recargar_response" xmlns="http://wadl.dev.java.net/2009/02">
+
+  <doc title="Inn_Servicios_Sel_Recargas">RestService</doc>
+
+  <grammars>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_GetPaquetesRecarga_response" schemaLocation="../XSD/nxsd_Response_GetPaquetesRecarga.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_Recargar_request" schemaLocation="../XSD/nxsd_Request_Recargar.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_Recargar_response" schemaLocation="../XSD/nxsd_Response_Recargar.xsd"/>
+    </xsd:schema>
+  </grammars>
+
+  <resources>
+    <resource path="/api/InnServiciosSel/recargas/paquetes">
+      <method name="GET" soa:wsdlOperation="GetPaquetesRecarga">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_GetPaquetesRecarga_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/recargas/recargar">
+      <method name="POST" soa:wsdlOperation="Recargar">
+        <request>
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_Recargar_request"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_Recargas_Recargar_response"/>
+        </response>
+      </method>
+    </resource>
+  </resources>
+</application>

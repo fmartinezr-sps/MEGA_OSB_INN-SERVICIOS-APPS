@@ -1,0 +1,1602 @@
+<definitions name="InnServiciosWebService" targetNamespace="http://xmlns.oracle.com/inn/serviciosweb/service" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/inn/serviciosweb/service" xmlns:types="http://xmlns.oracle.com/inn/serviciosweb/types" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <types>
+      <xsd:schema>
+         <xsd:import namespace="http://xmlns.oracle.com/inn/serviciosweb/types" schemaLocation="../../xsd/InnServiciosWebTypes.xsd"/>
+      </xsd:schema>
+   </types>
+   <message name="LoginRequestMsg">
+      <part name="payload" element="types:LoginRequest"/>
+   </message>
+   <message name="LoginResponseMsg">
+      <part name="payload" element="types:LoginResponse"/>
+   </message>
+   <message name="LoginNuevoRequestMsg">
+      <part name="payload" element="types:LoginNuevoRequest"/>
+   </message>
+   <message name="LoginNuevoResponseMsg">
+      <part name="payload" element="types:LoginNuevoResponse"/>
+   </message>
+   <message name="AuthRequestMsg">
+      <part name="payload" element="types:AuthRequest"/>
+   </message>
+   <message name="AuthResponseMsg">
+      <part name="payload" element="types:AuthResponse"/>
+   </message>
+   <message name="ValidaSuscriptorRequestMsg">
+      <part name="payload" element="types:ValidaSuscriptorRequest"/>
+   </message>
+   <message name="ValidaSuscriptorResponseMsg">
+      <part name="payload" element="types:ValidaSuscriptorResponse"/>
+   </message>
+   <message name="GetSuscriptorRequestMsg">
+      <part name="payload" element="types:GetSuscriptorRequest"/>
+   </message>
+   <message name="GetSuscriptorResponseMsg">
+      <part name="payload" element="types:GetSuscriptorResponse"/>
+   </message>
+   <message name="GetLlamadasRequestMsg">
+      <part name="payload" element="types:GetLlamadasRequest"/>
+   </message>
+   <message name="GetLlamadasResponseMsg">
+      <part name="payload" element="types:GetLlamadasResponse"/>
+   </message>
+   <message name="GetPeriodosRequestMsg">
+      <part name="payload" element="types:GetPeriodosRequest"/>
+   </message>
+   <message name="GetPeriodosResponseMsg">
+      <part name="payload" element="types:GetPeriodosResponse"/>
+   </message>
+   <message name="GetAnisMVNORequestMsg">
+      <part name="payload" element="types:GetAnisMVNORequest"/>
+   </message>
+   <message name="GetAnisMVNOResponseMsg">
+      <part name="payload" element="types:GetAnisMVNOResponse"/>
+   </message>
+   <message name="GetConsumosRequestMsg">
+      <part name="payload" element="types:GetConsumosRequest"/>
+   </message>
+   <message name="GetConsumosResponseMsg">
+      <part name="payload" element="types:GetConsumosResponse"/>
+   </message>
+   <message name="GetRecargasRequestMsg">
+      <part name="payload" element="types:GetRecargasRequest"/>
+   </message>
+   <message name="GetRecargasResponseMsg">
+      <part name="payload" element="types:GetRecargasResponse"/>
+   </message>
+   <message name="GetPagoRecienteRequestMsg">
+      <part name="payload" element="types:GetPagoRecienteRequest"/>
+   </message>
+   <message name="GetPagoRecienteResponseMsg">
+      <part name="payload" element="types:GetPagoRecienteResponse"/>
+   </message>
+   <message name="GetTrackingOTRequestMsg">
+      <part name="payload" element="types:GetTrackingOTRequest"/>
+   </message>
+   <message name="GetTrackingOTResponseMsg">
+      <part name="payload" element="types:GetTrackingOTResponse"/>
+   </message>
+   <message name="AccesosVencidosRequestMsg">
+      <part name="payload" element="types:AccesosVencidosRequest"/>
+   </message>
+   <message name="AccesosVencidosResponseMsg">
+      <part name="payload" element="types:AccesosVencidosResponse"/>
+   </message>
+   <message name="AddNewSuscriptorRequestMsg">
+      <part name="payload" element="types:AddNewSuscriptorRequest"/>
+   </message>
+   <message name="AddNewSuscriptorResponseMsg">
+      <part name="payload" element="types:AddNewSuscriptorResponse"/>
+   </message>
+   <message name="ForgotPasswordRequestMsg">
+      <part name="payload" element="types:ForgotPasswordRequest"/>
+   </message>
+   <message name="ForgotPasswordResponseMsg">
+      <part name="payload" element="types:ForgotPasswordResponse"/>
+   </message>
+   <message name="GetPaymentDetailsRequestMsg">
+      <part name="payload" element="types:GetPaymentDetailsRequest"/>
+   </message>
+   <message name="GetPaymentDetailsResponseMsg">
+      <part name="payload" element="types:GetPaymentDetailsResponse"/>
+   </message>
+   <message name="PagosProxyRequestMsg">
+      <part name="payload" element="types:PagosProxyRequest"/>
+   </message>
+   <message name="PagosProxyResponseMsg">
+      <part name="payload" element="types:PagosProxyResponse"/>
+   </message>
+   <message name="GetDatosPagoRequestMsg">
+      <part name="payload" element="types:GetDatosPagoRequest"/>
+   </message>
+   <message name="GetDatosPagoResponseMsg">
+      <part name="payload" element="types:GetDatosPagoResponse"/>
+   </message>
+   <message name="GetDatosFlpRequestMsg">
+      <part name="payload" element="types:GetDatosFlpRequest"/>
+   </message>
+   <message name="GetDatosFlpResponseMsg">
+      <part name="payload" element="types:GetDatosFlpResponse"/>
+   </message>
+   <message name="GetListadoPagosRequestMsg">
+      <part name="payload" element="types:GetListadoPagosRequest"/>
+   </message>
+   <message name="GetListadoPagosResponseMsg">
+      <part name="payload" element="types:GetListadoPagosResponse"/>
+   </message>
+   <message name="AgregarTarjetaRequestMsg">
+      <part name="payload" element="types:AgregarTarjetaRequest"/>
+   </message>
+   <message name="AgregarTarjetaResponseMsg">
+      <part name="payload" element="types:AgregarTarjetaResponse"/>
+   </message>
+   <message name="GetListaTicketRequestMsg">
+      <part name="payload" element="types:GetListaTicketRequest"/>
+   </message>
+   <message name="GetListaTicketResponseMsg">
+      <part name="payload" element="types:GetListaTicketResponse"/>
+   </message>
+   <message name="ReiniciarEquipoRequestMsg">
+      <part name="payload" element="types:ReiniciarEquipoRequest"/>
+   </message>
+   <message name="ReiniciarEquipoResponseMsg">
+      <part name="payload" element="types:ReiniciarEquipoResponse"/>
+   </message>
+   <message name="GetIncognitoRequestMsg">
+      <part name="payload" element="types:GetIncognitoRequest"/>
+   </message>
+   <message name="GetIncognitoResponseMsg">
+      <part name="payload" element="types:GetIncognitoResponse"/>
+   </message>
+   <message name="GetSkylineRequestMsg">
+      <part name="payload" element="types:GetSkylineRequest"/>
+   </message>
+   <message name="GetSkylineResponseMsg">
+      <part name="payload" element="types:GetSkylineResponse"/>
+   </message>
+   <message name="ConsultaNivelesRequestMsg">
+      <part name="payload" element="types:ConsultaNivelesRequest"/>
+   </message>
+   <message name="ConsultaNivelesResponseMsg">
+      <part name="payload" element="types:ConsultaNivelesResponse"/>
+   </message>
+   <message name="GetDiqueRequestMsg">
+      <part name="payload" element="types:GetDiqueRequest"/>
+   </message>
+   <message name="GetDiqueResponseMsg">
+      <part name="payload" element="types:GetDiqueResponse"/>
+   </message>
+   <message name="ReaprovisionarEquipoRequestMsg">
+      <part name="payload" element="types:ReaprovisionarEquipoRequest"/>
+   </message>
+   <message name="ReaprovisionarEquipoResponseMsg">
+      <part name="payload" element="types:ReaprovisionarEquipoResponse"/>
+   </message>
+   <message name="GetOrdenesTrabajoRequestMsg">
+      <part name="payload" element="types:GetOrdenesTrabajoRequest"/>
+   </message>
+   <message name="GetOrdenesTrabajoResponseMsg">
+      <part name="payload" element="types:GetOrdenesTrabajoResponse"/>
+   </message>
+   <message name="RefreshRequestMsg">
+      <part name="payload" element="types:RefreshRequest"/>
+   </message>
+   <message name="RefreshResponseMsg">
+      <part name="payload" element="types:RefreshResponse"/>
+   </message>
+   <message name="GetInfoWifiRequestMsg">
+      <part name="payload" element="types:GetInfoWifiRequest"/>
+   </message>
+   <message name="GetInfoWifiResponseMsg">
+      <part name="payload" element="types:GetInfoWifiResponse"/>
+   </message>
+   <message name="UpdateRedWifiRequestMsg">
+      <part name="payload" element="types:UpdateRedWifiRequest"/>
+   </message>
+   <message name="UpdateRedWifiResponseMsg">
+      <part name="payload" element="types:UpdateRedWifiResponse"/>
+   </message>
+   <message name="ActivateRedWifiRequestMsg">
+      <part name="payload" element="types:ActivateRedWifiRequest"/>
+   </message>
+   <message name="ActivateRedWifiResponseMsg">
+      <part name="payload" element="types:ActivateRedWifiResponse"/>
+   </message>
+   <message name="GetListaFacturasRequestMsg">
+      <part name="payload" element="types:GetListaFacturasRequest"/>
+   </message>
+   <message name="GetListaFacturasResponseMsg">
+      <part name="payload" element="types:GetListaFacturasResponse"/>
+   </message>
+   <message name="GetFacturaPDFRequestMsg">
+      <part name="payload" element="types:GetFacturaPDFRequest"/>
+   </message>
+   <message name="GetFacturaPDFResponseMsg">
+      <part name="payload" element="types:GetFacturaPDFResponse"/>
+   </message>
+   <message name="CreateFacturaRequestMsg">
+      <part name="payload" element="types:CreateFacturaRequest"/>
+   </message>
+   <message name="CreateFacturaResponseMsg">
+      <part name="payload" element="types:CreateFacturaResponse"/>
+   </message>
+   <message name="GetPaquetesRecargaRequestMsg">
+      <part name="payload" element="types:GetPaquetesRecargaRequest"/>
+   </message>
+   <message name="GetPaquetesRecargaResponseMsg">
+      <part name="payload" element="types:GetPaquetesRecargaResponse"/>
+   </message>
+   <message name="RecargarRequestMsg">
+      <part name="payload" element="types:RecargarRequest"/>
+   </message>
+   <message name="RecargarResponseMsg">
+      <part name="payload" element="types:RecargarResponse"/>
+   </message>
+   <message name="GenerarCodigoRequestMsg">
+      <part name="payload" element="types:GenerarCodigoRequest"/>
+   </message>
+   <message name="GenerarCodigoResponseMsg">
+      <part name="payload" element="types:GenerarCodigoResponse"/>
+   </message>
+   <message name="EnviarCodigoRequestMsg">
+      <part name="payload" element="types:EnviarCodigoRequest"/>
+   </message>
+   <message name="EnviarCodigoResponseMsg">
+      <part name="payload" element="types:EnviarCodigoResponse"/>
+   </message>
+   <message name="ValidarCodigoRequestMsg">
+      <part name="payload" element="types:ValidarCodigoRequest"/>
+   </message>
+   <message name="ValidarCodigoResponseMsg">
+      <part name="payload" element="types:ValidarCodigoResponse"/>
+   </message>
+   <message name="GetDescuentosRequestMsg">
+      <part name="payload" element="types:GetDescuentosRequest"/>
+   </message>
+   <message name="GetDescuentosResponseMsg">
+      <part name="payload" element="types:GetDescuentosResponse"/>
+   </message>
+   <message name="GetSucursalesRequestMsg">
+      <part name="payload" element="types:GetSucursalesRequest"/>
+   </message>
+   <message name="GetSucursalesResponseMsg">
+      <part name="payload" element="types:GetSucursalesResponse"/>
+   </message>
+   <message name="GetCategoriasRequestMsg">
+      <part name="payload" element="types:GetCategoriasRequest"/>
+   </message>
+   <message name="GetCategoriasResponseMsg">
+      <part name="payload" element="types:GetCategoriasResponse"/>
+   </message>
+   <message name="GetPaquetesRequestMsg">
+      <part name="payload" element="types:GetPaquetesRequest"/>
+   </message>
+   <message name="GetPaquetesResponseMsg">
+      <part name="payload" element="types:GetPaquetesResponse"/>
+   </message>
+   <message name="GetCanalesRequestMsg">
+      <part name="payload" element="types:GetCanalesRequest"/>
+   </message>
+   <message name="GetCanalesResponseMsg">
+      <part name="payload" element="types:GetCanalesResponse"/>
+   </message>
+   <message name="GetListaEdoCtaRequestMsg">
+      <part name="payload" element="types:GetListaEdoCtaRequest"/>
+   </message>
+   <message name="GetListaEdoCtaResponseMsg">
+      <part name="payload" element="types:GetListaEdoCtaResponse"/>
+   </message>
+   <message name="GetDataEstadoCuentaRequestMsg">
+      <part name="payload" element="types:GetDataEstadoCuentaRequest"/>
+   </message>
+   <message name="GetDataEstadoCuentaResponseMsg">
+      <part name="payload" element="types:GetDataEstadoCuentaResponse"/>
+   </message>
+   <message name="SendSmsEdoctaRequestMsg">
+      <part name="payload" element="types:SendSmsEdoctaRequest"/>
+   </message>
+   <message name="SendSmsEdoctaResponseMsg">
+      <part name="payload" element="types:SendSmsEdoctaResponse"/>
+   </message>
+   <message name="GetContratosRequestMsg">
+      <part name="payload" element="types:GetContratosRequest"/>
+   </message>
+   <message name="GetContratosResponseMsg">
+      <part name="payload" element="types:GetContratosResponse"/>
+   </message>
+   <message name="GetListaServiciosContratadosRequestMsg">
+      <part name="payload" element="types:GetListaServiciosContratadosRequest"/>
+   </message>
+   <message name="GetListaServiciosContratadosResponseMsg">
+      <part name="payload" element="types:GetListaServiciosContratadosResponse"/>
+   </message>
+   <message name="ValidarXViewRequestMsg">
+      <part name="payload" element="types:ValidarXViewRequest"/>
+   </message>
+   <message name="ValidarXViewResponseMsg">
+      <part name="payload" element="types:ValidarXViewResponse"/>
+   </message>
+   <message name="EmailNortonRequestMsg">
+      <part name="payload" element="types:EmailNortonRequest"/>
+   </message>
+   <message name="EmailNortonResponseMsg">
+      <part name="payload" element="types:EmailNortonResponse"/>
+   </message>
+   <message name="GetServiciosMegamovilRequestMsg">
+      <part name="payload" element="types:GetServiciosMegamovilRequest"/>
+   </message>
+   <message name="GetServiciosMegamovilResponseMsg">
+      <part name="payload" element="types:GetServiciosMegamovilResponse"/>
+   </message>
+   <message name="ContratarMegamovilRequestMsg">
+      <part name="payload" element="types:ContratarMegamovilRequest"/>
+   </message>
+   <message name="ContratarMegamovilResponseMsg">
+      <part name="payload" element="types:ContratarMegamovilResponse"/>
+   </message>
+   <message name="TrackingMegamovilRequestMsg">
+      <part name="payload" element="types:TrackingMegamovilRequest"/>
+   </message>
+   <message name="TrackingMegamovilResponseMsg">
+      <part name="payload" element="types:TrackingMegamovilResponse"/>
+   </message>
+   <message name="ValidarServiciosRequestMsg">
+      <part name="payload" element="types:ValidarServiciosRequest"/>
+   </message>
+   <message name="ValidarServiciosResponseMsg">
+      <part name="payload" element="types:ValidarServiciosResponse"/>
+   </message>
+   <message name="ValidarContratacionesRequestMsg">
+      <part name="payload" element="types:ValidarContratacionesRequest"/>
+   </message>
+   <message name="ValidarContratacionesResponseMsg">
+      <part name="payload" element="types:ValidarContratacionesResponse"/>
+   </message>
+   <message name="BitacoraEventoRequestMsg">
+      <part name="payload" element="types:BitacoraEventoRequest"/>
+   </message>
+   <message name="BitacoraEventoResponseMsg">
+      <part name="payload" element="types:BitacoraEventoResponse"/>
+   </message>
+   <message name="ValidarCodigoContratacionRequestMsg">
+      <part name="payload" element="types:ValidarCodigoContratacionRequest"/>
+   </message>
+   <message name="ValidarCodigoContratacionResponseMsg">
+      <part name="payload" element="types:ValidarCodigoContratacionResponse"/>
+   </message>
+   <message name="ConsultarIMEIRequestMsg">
+      <part name="payload" element="types:ConsultarIMEIRequest"/>
+   </message>
+   <message name="ConsultarIMEIResponseMsg">
+      <part name="payload" element="types:ConsultarIMEIResponse"/>
+   </message>
+   <message name="ValidarServicioMegamovilRequestMsg">
+      <part name="payload" element="types:ValidarServicioMegamovilRequest"/>
+   </message>
+   <message name="ValidarServicioMegamovilResponseMsg">
+      <part name="payload" element="types:ValidarServicioMegamovilResponse"/>
+   </message>
+   <message name="GetTokenAmazonRequestMsg">
+      <part name="payload" element="types:GetTokenAmazonRequest"/>
+   </message>
+   <message name="GetTokenAmazonResponseMsg">
+      <part name="payload" element="types:GetTokenAmazonResponse"/>
+   </message>
+   <message name="GetServiceAmazonRequestMsg">
+      <part name="payload" element="types:GetServiceAmazonRequest"/>
+   </message>
+   <message name="GetServiceAmazonResponseMsg">
+      <part name="payload" element="types:GetServiceAmazonResponse"/>
+   </message>
+   <message name="GetConfiguracionSelRequestMsg">
+      <part name="payload" element="types:GetConfiguracionSelRequest"/>
+   </message>
+   <message name="GetConfiguracionSelResponseMsg">
+      <part name="payload" element="types:GetConfiguracionSelResponse"/>
+   </message>
+   <message name="ListadoPortabilidadesRequestMsg">
+      <part name="payload" element="types:ListadoPortabilidadesRequest"/>
+   </message>
+   <message name="ListadoPortabilidadesResponseMsg">
+      <part name="payload" element="types:ListadoPortabilidadesResponse"/>
+   </message>
+   <message name="PortarLineaRequestMsg">
+      <part name="payload" element="types:PortarLineaRequest"/>
+   </message>
+   <message name="PortarLineaResponseMsg">
+      <part name="payload" element="types:PortarLineaResponse"/>
+   </message>
+   <message name="ActualizarDatosPortabilidadRequestMsg">
+      <part name="payload" element="types:ActualizarDatosPortabilidadRequest"/>
+   </message>
+   <message name="ActualizarDatosPortabilidadResponseMsg">
+      <part name="payload" element="types:ActualizarDatosPortabilidadResponse"/>
+   </message>
+   <message name="ValidarPortabilidadRequestMsg">
+      <part name="payload" element="types:ValidarPortabilidadRequest"/>
+   </message>
+   <message name="ValidarPortabilidadResponseMsg">
+      <part name="payload" element="types:ValidarPortabilidadResponse"/>
+   </message>
+   <message name="faultMsg">
+      <part name="payload" element="types:errorResponse"/>
+   </message>
+   <portType name="InnServiciosWebPortType">
+      <operation name="Login">
+         <input message="tns:LoginRequestMsg"/>
+         <output message="tns:LoginResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="LoginNuevo">
+         <input message="tns:LoginNuevoRequestMsg"/>
+         <output message="tns:LoginNuevoResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="Auth">
+         <input message="tns:AuthRequestMsg"/>
+         <output message="tns:AuthResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ValidaSuscriptor">
+         <input message="tns:ValidaSuscriptorRequestMsg"/>
+         <output message="tns:ValidaSuscriptorResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetSuscriptor">
+         <input message="tns:GetSuscriptorRequestMsg"/>
+         <output message="tns:GetSuscriptorResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetLlamadas">
+         <input message="tns:GetLlamadasRequestMsg"/>
+         <output message="tns:GetLlamadasResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetPeriodos">
+         <input message="tns:GetPeriodosRequestMsg"/>
+         <output message="tns:GetPeriodosResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetAnisMVNO">
+         <input message="tns:GetAnisMVNORequestMsg"/>
+         <output message="tns:GetAnisMVNOResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetConsumos">
+         <input message="tns:GetConsumosRequestMsg"/>
+         <output message="tns:GetConsumosResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetRecargas">
+         <input message="tns:GetRecargasRequestMsg"/>
+         <output message="tns:GetRecargasResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetPagoReciente">
+         <input message="tns:GetPagoRecienteRequestMsg"/>
+         <output message="tns:GetPagoRecienteResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetTrackingOT">
+         <input message="tns:GetTrackingOTRequestMsg"/>
+         <output message="tns:GetTrackingOTResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="AccesosVencidos">
+         <input message="tns:AccesosVencidosRequestMsg"/>
+         <output message="tns:AccesosVencidosResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="AddNewSuscriptor">
+         <input message="tns:AddNewSuscriptorRequestMsg"/>
+         <output message="tns:AddNewSuscriptorResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ForgotPassword">
+         <input message="tns:ForgotPasswordRequestMsg"/>
+         <output message="tns:ForgotPasswordResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetPaymentDetails">
+         <input message="tns:GetPaymentDetailsRequestMsg"/>
+         <output message="tns:GetPaymentDetailsResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="PagosProxy">
+         <input message="tns:PagosProxyRequestMsg"/>
+         <output message="tns:PagosProxyResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetDatosPago">
+         <input message="tns:GetDatosPagoRequestMsg"/>
+         <output message="tns:GetDatosPagoResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetDatosFlp">
+         <input message="tns:GetDatosFlpRequestMsg"/>
+         <output message="tns:GetDatosFlpResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetListadoPagos">
+         <input message="tns:GetListadoPagosRequestMsg"/>
+         <output message="tns:GetListadoPagosResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="AgregarTarjeta">
+         <input message="tns:AgregarTarjetaRequestMsg"/>
+         <output message="tns:AgregarTarjetaResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetListaTicket">
+         <input message="tns:GetListaTicketRequestMsg"/>
+         <output message="tns:GetListaTicketResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ReiniciarEquipo">
+         <input message="tns:ReiniciarEquipoRequestMsg"/>
+         <output message="tns:ReiniciarEquipoResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetIncognito">
+         <input message="tns:GetIncognitoRequestMsg"/>
+         <output message="tns:GetIncognitoResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetSkyline">
+         <input message="tns:GetSkylineRequestMsg"/>
+         <output message="tns:GetSkylineResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ConsultaNiveles">
+         <input message="tns:ConsultaNivelesRequestMsg"/>
+         <output message="tns:ConsultaNivelesResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetDique">
+         <input message="tns:GetDiqueRequestMsg"/>
+         <output message="tns:GetDiqueResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ReaprovisionarEquipo">
+         <input message="tns:ReaprovisionarEquipoRequestMsg"/>
+         <output message="tns:ReaprovisionarEquipoResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetOrdenesTrabajo">
+         <input message="tns:GetOrdenesTrabajoRequestMsg"/>
+         <output message="tns:GetOrdenesTrabajoResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="Refresh">
+         <input message="tns:RefreshRequestMsg"/>
+         <output message="tns:RefreshResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetInfoWifi">
+         <input message="tns:GetInfoWifiRequestMsg"/>
+         <output message="tns:GetInfoWifiResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="UpdateRedWifi">
+         <input message="tns:UpdateRedWifiRequestMsg"/>
+         <output message="tns:UpdateRedWifiResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ActivateRedWifi">
+         <input message="tns:ActivateRedWifiRequestMsg"/>
+         <output message="tns:ActivateRedWifiResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetListaFacturas">
+         <input message="tns:GetListaFacturasRequestMsg"/>
+         <output message="tns:GetListaFacturasResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetFacturaPDF">
+         <input message="tns:GetFacturaPDFRequestMsg"/>
+         <output message="tns:GetFacturaPDFResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="CreateFactura">
+         <input message="tns:CreateFacturaRequestMsg"/>
+         <output message="tns:CreateFacturaResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetPaquetesRecarga">
+         <input message="tns:GetPaquetesRecargaRequestMsg"/>
+         <output message="tns:GetPaquetesRecargaResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="Recargar">
+         <input message="tns:RecargarRequestMsg"/>
+         <output message="tns:RecargarResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GenerarCodigo">
+         <input message="tns:GenerarCodigoRequestMsg"/>
+         <output message="tns:GenerarCodigoResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="EnviarCodigo">
+         <input message="tns:EnviarCodigoRequestMsg"/>
+         <output message="tns:EnviarCodigoResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ValidarCodigo">
+         <input message="tns:ValidarCodigoRequestMsg"/>
+         <output message="tns:ValidarCodigoResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetDescuentos">
+         <input message="tns:GetDescuentosRequestMsg"/>
+         <output message="tns:GetDescuentosResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetSucursales">
+         <input message="tns:GetSucursalesRequestMsg"/>
+         <output message="tns:GetSucursalesResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetCategorias">
+         <input message="tns:GetCategoriasRequestMsg"/>
+         <output message="tns:GetCategoriasResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetPaquetes">
+         <input message="tns:GetPaquetesRequestMsg"/>
+         <output message="tns:GetPaquetesResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetCanales">
+         <input message="tns:GetCanalesRequestMsg"/>
+         <output message="tns:GetCanalesResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetListaEdoCta">
+         <input message="tns:GetListaEdoCtaRequestMsg"/>
+         <output message="tns:GetListaEdoCtaResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetDataEstadoCuenta">
+         <input message="tns:GetDataEstadoCuentaRequestMsg"/>
+         <output message="tns:GetDataEstadoCuentaResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="SendSmsEdocta">
+         <input message="tns:SendSmsEdoctaRequestMsg"/>
+         <output message="tns:SendSmsEdoctaResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetContratos">
+         <input message="tns:GetContratosRequestMsg"/>
+         <output message="tns:GetContratosResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetListaServiciosContratados">
+         <input message="tns:GetListaServiciosContratadosRequestMsg"/>
+         <output message="tns:GetListaServiciosContratadosResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ValidarXView">
+         <input message="tns:ValidarXViewRequestMsg"/>
+         <output message="tns:ValidarXViewResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="EmailNorton">
+         <input message="tns:EmailNortonRequestMsg"/>
+         <output message="tns:EmailNortonResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetServiciosMegamovil">
+         <input message="tns:GetServiciosMegamovilRequestMsg"/>
+         <output message="tns:GetServiciosMegamovilResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ContratarMegamovil">
+         <input message="tns:ContratarMegamovilRequestMsg"/>
+         <output message="tns:ContratarMegamovilResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="TrackingMegamovil">
+         <input message="tns:TrackingMegamovilRequestMsg"/>
+         <output message="tns:TrackingMegamovilResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ValidarServicios">
+         <input message="tns:ValidarServiciosRequestMsg"/>
+         <output message="tns:ValidarServiciosResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ValidarContrataciones">
+         <input message="tns:ValidarContratacionesRequestMsg"/>
+         <output message="tns:ValidarContratacionesResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="BitacoraEvento">
+         <input message="tns:BitacoraEventoRequestMsg"/>
+         <output message="tns:BitacoraEventoResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ValidarCodigoContratacion">
+         <input message="tns:ValidarCodigoContratacionRequestMsg"/>
+         <output message="tns:ValidarCodigoContratacionResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ConsultarIMEI">
+         <input message="tns:ConsultarIMEIRequestMsg"/>
+         <output message="tns:ConsultarIMEIResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ValidarServicioMegamovil">
+         <input message="tns:ValidarServicioMegamovilRequestMsg"/>
+         <output message="tns:ValidarServicioMegamovilResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetTokenAmazon">
+         <input message="tns:GetTokenAmazonRequestMsg"/>
+         <output message="tns:GetTokenAmazonResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetServiceAmazon">
+         <input message="tns:GetServiceAmazonRequestMsg"/>
+         <output message="tns:GetServiceAmazonResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="GetConfiguracionSel">
+         <input message="tns:GetConfiguracionSelRequestMsg"/>
+         <output message="tns:GetConfiguracionSelResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ListadoPortabilidades">
+         <input message="tns:ListadoPortabilidadesRequestMsg"/>
+         <output message="tns:ListadoPortabilidadesResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="PortarLinea">
+         <input message="tns:PortarLineaRequestMsg"/>
+         <output message="tns:PortarLineaResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ActualizarDatosPortabilidad">
+         <input message="tns:ActualizarDatosPortabilidadRequestMsg"/>
+         <output message="tns:ActualizarDatosPortabilidadResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+      <operation name="ValidarPortabilidad">
+         <input message="tns:ValidarPortabilidadRequestMsg"/>
+         <output message="tns:ValidarPortabilidadResponseMsg"/>
+         <fault name="fault" message="tns:faultMsg"/>
+      </operation>
+   </portType>
+   <binding name="InnServiciosWebPortTypeSOAP11Binding" type="tns:InnServiciosWebPortType">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="Login">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/Login"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="LoginNuevo">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/LoginNuevo"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="Auth">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/Auth"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ValidaSuscriptor">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ValidaSuscriptor"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetSuscriptor">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetSuscriptor"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetLlamadas">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetLlamadas"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetPeriodos">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetPeriodos"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetAnisMVNO">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetAnisMVNO"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetConsumos">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetConsumos"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetRecargas">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetRecargas"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetPagoReciente">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetPagoReciente"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetTrackingOT">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetTrackingOT"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="AccesosVencidos">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/AccesosVencidos"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="AddNewSuscriptor">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/AddNewSuscriptor"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ForgotPassword">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ForgotPassword"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetPaymentDetails">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetPaymentDetails"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="PagosProxy">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/PagosProxy"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetDatosPago">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetDatosPago"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetDatosFlp">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetDatosFlp"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetListadoPagos">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetListadoPagos"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="AgregarTarjeta">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/AgregarTarjeta"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetListaTicket">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetListaTicket"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ReiniciarEquipo">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ReiniciarEquipo"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetIncognito">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetIncognito"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetSkyline">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetSkyline"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ConsultaNiveles">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ConsultaNiveles"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetDique">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetDique"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ReaprovisionarEquipo">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ReaprovisionarEquipo"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetOrdenesTrabajo">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetOrdenesTrabajo"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="Refresh">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/Refresh"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetInfoWifi">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetInfoWifi"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="UpdateRedWifi">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/UpdateRedWifi"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ActivateRedWifi">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ActivateRedWifi"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetListaFacturas">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetListaFacturas"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetFacturaPDF">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetFacturaPDF"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="CreateFactura">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/CreateFactura"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetPaquetesRecarga">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetPaquetesRecarga"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="Recargar">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/Recargar"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GenerarCodigo">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GenerarCodigo"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="EnviarCodigo">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/EnviarCodigo"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ValidarCodigo">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ValidarCodigo"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetDescuentos">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetDescuentos"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetSucursales">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetSucursales"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetCategorias">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetCategorias"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetPaquetes">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetPaquetes"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetCanales">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetCanales"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetListaEdoCta">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetListaEdoCta"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetDataEstadoCuenta">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetDataEstadoCuenta"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="SendSmsEdocta">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/SendSmsEdocta"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetContratos">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetContratos"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetListaServiciosContratados">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetListaServiciosContratados"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ValidarXView">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ValidarXView"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="EmailNorton">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/EmailNorton"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetServiciosMegamovil">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetServiciosMegamovil"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ContratarMegamovil">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ContratarMegamovil"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="TrackingMegamovil">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/TrackingMegamovil"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ValidarServicios">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ValidarServicios"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ValidarContrataciones">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ValidarContrataciones"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="BitacoraEvento">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/BitacoraEvento"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ValidarCodigoContratacion">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ValidarCodigoContratacion"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ConsultarIMEI">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ConsultarIMEI"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ValidarServicioMegamovil">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ValidarServicioMegamovil"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetTokenAmazon">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetTokenAmazon"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetServiceAmazon">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetServiceAmazon"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="GetConfiguracionSel">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/GetConfiguracionSel"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ListadoPortabilidades">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ListadoPortabilidades"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="PortarLinea">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/PortarLinea"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ActualizarDatosPortabilidad">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ActualizarDatosPortabilidad"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+      <operation name="ValidarPortabilidad">
+         <soap:operation style="document" soapAction="http://xmlns.oracle.com/inn/serviciosweb/service/ValidarPortabilidad"/>
+         <input>
+            <soap:body use="literal" parts="payload"/>
+         </input>
+         <output>
+            <soap:body use="literal" parts="payload"/>
+         </output>
+         <fault name="fault">
+            <soap:fault name="fault" use="literal"/>
+         </fault>
+      </operation>
+   </binding>
+</definitions>

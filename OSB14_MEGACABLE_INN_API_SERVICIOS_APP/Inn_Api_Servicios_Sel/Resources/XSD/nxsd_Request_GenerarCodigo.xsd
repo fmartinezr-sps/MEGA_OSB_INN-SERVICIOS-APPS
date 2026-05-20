@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns="http://TargetNamespace.com/Inn_Servicios_Sel_Referidos_GenerarCodigo_request"
+            targetNamespace="http://TargetNamespace.com/Inn_Servicios_Sel_Referidos_GenerarCodigo_request"
+            nxsd:version="JSON"
+            nxsd:encoding="UTF-8"
+            elementFormDefault="qualified">
+
+  <xsd:element name="Root-Element">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="sucursal" type="xsd:string"/>
+        <xsd:element name="suscriptor" type="xsd:string"/>
+        <xsd:element name="origen" type="xsd:string" minOccurs="0"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:annotation xmlns=""><xsd:appinfo>NXSDSAMPLE=</xsd:appinfo><xsd:appinfo>USEHEADER=false</xsd:appinfo></xsd:annotation>
+</xsd:schema>

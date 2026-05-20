@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+           xmlns:tns="http://TargetNamespace.com/Inn_Servicios_Sel_Servicios_GetTokenAmazon_request"
+           targetNamespace="http://TargetNamespace.com/Inn_Servicios_Sel_Servicios_GetTokenAmazon_request"
+           elementFormDefault="qualified" attributeFormDefault="unqualified"
+           nxsd:version="JSON" nxsd:stream="chars" nxsd:encoding="UTF-8">
+  <xs:element name="Root-Element">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="sucursal" type="xs:string"/>
+        <xs:element name="suscriptor" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,34 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Operation1_response" targetNamespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_Operation1_response" elementFormDefault="qualified" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" nxsd:version="JSON" nxsd:jsonTopLevelArray="true" nxsd:encoding="UTF-8">
+   <xsd:element name="Root-Element">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="topLevelArray" maxOccurs="unbounded">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="id" type="xsd:integer"/>
+                     <xsd:element name="titulo" type="xsd:string"/>
+                     <xsd:element name="subtitulo" type="xsd:string"/>
+                     <xsd:element name="detalles" type="xsd:string"/>
+                     <xsd:element name="vigencia" type="xsd:string"/>
+                     <xsd:element name="precio" type="xsd:decimal"/>
+                     <xsd:element name="servicios">
+                        <xsd:complexType>
+                           <xsd:sequence>
+                              <xsd:element name="redesSociales" maxOccurs="unbounded" type="xsd:string"/>
+      <xsd:element name="minutos" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="datos" type="xsd:string" minOccurs="0"/>
+                           </xsd:sequence>
+                        </xsd:complexType>
+                     </xsd:element>
+                  </xsd:sequence>
+               </xsd:complexType>
+            </xsd:element>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+<xsd:annotation xmlns="">
+      <xsd:appinfo>NXSDSAMPLE=</xsd:appinfo>
+      <xsd:appinfo>USEHEADER=false</xsd:appinfo>
+   </xsd:annotation>
+</xsd:schema>

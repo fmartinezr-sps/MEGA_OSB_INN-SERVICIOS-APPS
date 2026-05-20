@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetSuscriptor_response" targetNamespace="http://TargetNamespace.com/Inn_Servicios_Sel_Suscriptor_GetSuscriptor_response" elementFormDefault="qualified" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" nxsd:version="JSON" nxsd:encoding="UTF-8">
+   <xsd:element name="Root-Element">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="nombre" type="xsd:string"/>
+            <xsd:element name="apellidoPaterno" type="xsd:string"/>
+            <xsd:element name="apellidoMaterno" type="xsd:string"/>
+            <xsd:element name="fechaRegistro" type="xsd:string"/>
+            <xsd:element name="domicilio">
+               <xsd:complexType>
+                  <xsd:sequence>
+                     <xsd:element name="calle" type="xsd:string"/>
+                     <xsd:element name="numeroexterior" type="xsd:int"/>
+                     <xsd:element name="numerointerior" type="xsd:int"/>
+                     <xsd:element name="departamento" type="xsd:int"/>
+                     <xsd:element name="bis" type="xsd:string"/>
+                     <xsd:element name="colonia" type="xsd:string"/>
+                     <xsd:element name="entrecalle1" type="xsd:string"/>
+                     <xsd:element name="entrecalle2" type="xsd:string"/>
+                     <xsd:element name="codigopostal" type="xsd:string"/>
+                     <xsd:element name="ciudad" type="xsd:string"/>
+                     <xsd:element name="estado" type="xsd:string"/>
+                  </xsd:sequence>
+               </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="telefonoCelular" type="xsd:string"/>
+            <xsd:element name="telefonoMegafon" type="xsd:string"/>
+            <xsd:element name="telefonoParticular" type="xsd:string"/>
+            <xsd:element name="telefonoUltimo" type="xsd:string"/>
+            <xsd:element name="diaDeCorte" type="xsd:int"/>
+            <xsd:element name="sucursal" type="xsd:int"/>
+            <xsd:element name="suscriptor" type="xsd:int"/>
+            <xsd:element name="tipoCliente" type="xsd:string"/>
+            <xsd:element name="problemaSuscriptorDescripcion" type="xsd:string"/>
+            <xsd:element name="nombreComercial" type="xsd:string"/>
+            <xsd:element name="paquete" type="xsd:string"/>
+            <xsd:element name="email" type="xsd:string"/>
+            <xsd:element name="telefonoWhatsapp" type="xsd:string"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+<xsd:annotation xmlns="">
+      <xsd:appinfo>NXSDSAMPLE=</xsd:appinfo>
+      <xsd:appinfo>USEHEADER=false</xsd:appinfo>
+   </xsd:annotation>
+</xsd:schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+           xmlns:tns="http://TargetNamespace.com/Inn_Servicios_Sel_Servicios_GetContratos_response"
+           targetNamespace="http://TargetNamespace.com/Inn_Servicios_Sel_Servicios_GetContratos_response"
+           elementFormDefault="qualified" attributeFormDefault="unqualified"
+           nxsd:version="JSON" nxsd:jsonTopLevelArray="true" nxsd:encoding="UTF-8">
+  <xs:element name="Root-Element">
+    <xs:complexType>
+      <xs:sequence>
+        <!--xs:element name="idCliente" type="xs:string" minOccurs="0" maxOccurs="unbounded"/-->
+        
+        <xs:element name="topLevelArray" maxOccurs="unbounded">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="idCliente" type="xs:string"/>
+                  </xs:sequence>
+               </xs:complexType>
+        </xs:element>
+        
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

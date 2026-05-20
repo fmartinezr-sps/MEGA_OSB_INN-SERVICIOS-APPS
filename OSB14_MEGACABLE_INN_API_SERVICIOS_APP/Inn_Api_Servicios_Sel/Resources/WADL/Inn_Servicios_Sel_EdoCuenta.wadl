@@ -1,0 +1,50 @@
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="http://TargetNamespace.com/Inn_Servicios_Sel_EdoCuenta_GetListaEdoCta_response" xmlns:ns2="http://TargetNamespace.com/Inn_Servicios_Sel_EdoCuenta_GetDataEstadoCuenta_response" xmlns:ns3="http://TargetNamespace.com/Inn_Servicios_Sel_EdoCuenta_SendSmsEdocta_request" xmlns:ns4="http://TargetNamespace.com/Inn_Servicios_Sel_EdoCuenta_SendSmsEdocta_response" xmlns="http://wadl.dev.java.net/2009/02">
+
+  <doc title="Inn_Servicios_Sel_EdoCuenta">RestService</doc>
+
+  <grammars>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_EdoCuenta_GetListaEdoCta_response" schemaLocation="../XSD/nxsd_Response_GetListaEdoCta.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_EdoCuenta_GetDataEstadoCuenta_response" schemaLocation="../XSD/nxsd_Response_GetDataEstadoCuenta.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_EdoCuenta_SendSmsEdocta_request" schemaLocation="../XSD/nxsd_Request_SendSmsEdocta.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://TargetNamespace.com/Inn_Servicios_Sel_EdoCuenta_SendSmsEdocta_response" schemaLocation="../XSD/nxsd_Response_SendSmsEdocta.xsd"/>
+    </xsd:schema>
+  </grammars>
+
+  <resources>
+    <resource path="/api/InnServiciosSel/estadoCuenta/getListaEdoCta">
+      <method name="GET" soa:wsdlOperation="GetListaEdoCta">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_EdoCuenta_GetListaEdoCta_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/estadoCuenta/getListaEdoCta/getDataEstadoCuenta">
+      <method name="GET" soa:wsdlOperation="GetDataEstadoCuenta">
+        <request/>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_EdoCuenta_GetDataEstadoCuenta_response"/>
+        </response>
+      </method>
+    </resource>
+
+    <resource path="/api/InnServiciosSel/estadoCuenta/getListaEdoCta/sendSmsEdocta">
+      <method name="POST" soa:wsdlOperation="SendSmsEdocta">
+        <request>
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_EdoCuenta_SendSmsEdocta_request"/>
+        </request>
+        <response status="200">
+          <representation mediaType="application/json" element="cns:Root-Element" xmlns:cns="http://TargetNamespace.com/Inn_Servicios_Sel_EdoCuenta_SendSmsEdocta_response"/>
+        </response>
+      </method>
+    </resource>
+  </resources>
+</application>

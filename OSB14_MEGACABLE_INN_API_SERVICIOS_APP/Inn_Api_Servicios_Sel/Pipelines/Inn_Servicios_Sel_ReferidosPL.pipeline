@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:coreEntry>
+        <con:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType">
+            <con:wsdl ref="Inn_Api_Servicios_Sel/Resources/WSDL/Inn_Servicios_Sel_Referidos"/>
+            <con:binding>
+                <con:name>Inn_Servicios_Sel_Referidos_ptt-binding</con:name>
+                <con:namespace>http://xmlns.oracle.com/Inn_api_servicios_sel_OSB/Inn_Api_Servicios_Sel/Inn_Servicios_Sel_Referidos</con:namespace>
+            </con:binding>
+        </con:binding>
+        <con:xqConfiguration>
+            <con:snippetVersion>1.0</con:snippetVersion>
+        </con:xqConfiguration>
+    </con:coreEntry>
+    <con:router>
+        <!--==================== GenerarCodigo ====================-->
+        <con:pipeline type="request" name="request-generar-codigo-req">
+            <con:stage id="_StageId-ref-generar-req-01" name="StageGenerarCodigoReq">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Referidos_GenerarCodigo_request" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-generar-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>GenerarCodigoIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-generar-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_GenerarCodigo"/>
+                                <con2:input>$body/inn:Root-Element</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-generar-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>GenerarCodigo</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-generar-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>GenerarCodigoOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-generar-codigo-res">
+            <con:stage id="_StageId-ref-generar-res-01" name="StageGenerarCodigoRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Referidos_GenerarCodigo_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-generar-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_GenerarCodigo"/>
+                                <con2:input>$body/*</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== EnviarCodigo ====================-->
+        <con:pipeline type="request" name="request-enviar-codigo-req">
+            <con:stage id="_StageId-ref-enviar-req-01" name="StageEnviarCodigoReq">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Referidos_EnviarCodigo_request" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-enviar-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>EnviarCodigoIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-enviar-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_EnviarCodigo"/>
+                                <con2:input>$body/inn:Root-Element</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-enviar-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>EnviarCodigo</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-enviar-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>EnviarCodigoOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-enviar-codigo-res">
+            <con:stage id="_StageId-ref-enviar-res-01" name="StageEnviarCodigoRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Referidos_EnviarCodigo_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-enviar-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_EnviarCodigo"/>
+                                <con2:input>$body/*</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== ValidarCodigo ====================-->
+        <con:pipeline type="request" name="request-validar-codigo-req">
+            <con:stage id="_StageId-ref-validar-req-01" name="StageValidarCodigoReq">
+                <con:context/>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-validar-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$inbound/ctx:transport/ctx:request/http:query-parameters</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>ValidarCodigoIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-validar-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_ValidarCodigo"/>
+                                <con2:input>$body</con2:input>
+                                <con2:param name="sucursal">
+                                    <con2:path>$inbound/ctx:transport/ctx:request/http:query-parameters/http:parameter[@name='sucursal']/@value</con2:path>
+                                </con2:param>
+                                <con2:param name="suscriptor">
+                                    <con2:path>$inbound/ctx:transport/ctx:request/http:query-parameters/http:parameter[@name='suscriptor']/@value</con2:path>
+                                </con2:param>
+                                <con2:param name="codigo">
+                                    <con2:path>$inbound/ctx:transport/ctx:request/http:query-parameters/http:parameter[@name='codigo']/@value</con2:path>
+                                </con2:param>
+                                <con2:param name="origen">
+                                    <con2:path>$inbound/ctx:transport/ctx:request/http:query-parameters/http:parameter[@name='origen']/@value</con2:path>
+                                </con2:param>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-validar-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>ValidarCodigo</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-validar-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>ValidarCodigoOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-validar-codigo-res">
+            <con:stage id="_StageId-ref-validar-res-01" name="StageValidarCodigoRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Referidos_ValidarCodigo_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-validar-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_ValidarCodigo"/>
+                                <con2:input>$body/*</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== GetDescuentos ====================-->
+        <con:pipeline type="request" name="request-get-descuentos-req">
+            <con:stage id="_StageId-ref-descuentos-req-01" name="StageGetDescuentosReq">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Referidos_GetDescuentos_request" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-descuentos-rpt-01</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>GetDescuentosIn</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-descuentos-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Request_GetDescuentos"/>
+                                <con2:input>$body/inn:Root-Element</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                    <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-descuentos-wsc-01</con2:id>
+                        <con1:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con1:operation>GetDescuentos</con1:operation>
+                        <con1:request>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:request>
+                        <con1:response>
+                            <con1:body wrapped="true">body</con1:body>
+                        </con1:response>
+                        <con1:requestTransform/>
+                        <con1:responseTransform/>
+                    </con1:wsCallout>
+                    <con1:report xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-descuentos-rpt-02</con2:id>
+                        <con1:expr>
+                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+                        </con1:expr>
+                        <con1:labels>
+                            <con1:key>GetDescuentosOut</con1:key>
+                            <con1:varName>body</con1:varName>
+                            <con1:value>
+                                <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">.</con2:xpathText>
+                            </con1:value>
+                        </con1:labels>
+                    </con1:report>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-get-descuentos-res">
+            <con:stage id="_StageId-ref-descuentos-res-01" name="StageGetDescuentosRes">
+                <con:context>
+                    <con1:userNsDecl prefix="inn" namespace="http://TargetNamespace.com/Inn_Servicios_Sel_Referidos_GetDescuentos_response" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                </con:context>
+                <con:actions>
+                    <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-ref-descuentos-res-xsl-01</con2:id>
+                        <con1:expr>
+                            <con2:xsltTransform xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+                                <con2:resource ref="Inn_Api_Servicios_Sel/Resources/Transformations/Response_GetDescuentos"/>
+                                <con2:input>$body/*</con2:input>
+                            </con2:xsltTransform>
+                        </con1:expr>
+                    </con1:replace>
+                </con:actions>
+            </con:stage>
+        </con:pipeline>
+        <!--==================== Flow Router ====================-->
+        <con:flow>
+            <con:branch-node type="operation" id="_FlowId-ref-branch-01" name="BranchNode1">
+                <con:context/>
+                <con:branch-table>
+                    <con:branch name="GenerarCodigo">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline GenerarCodigo">
+                                <con:request>request-generar-codigo-req</con:request>
+                                <con:response>response-generar-codigo-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="EnviarCodigo">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline EnviarCodigo">
+                                <con:request>request-enviar-codigo-req</con:request>
+                                <con:response>response-enviar-codigo-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="ValidarCodigo">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline ValidarCodigo">
+                                <con:request>request-validar-codigo-req</con:request>
+                                <con:response>response-validar-codigo-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="GetDescuentos">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:pipeline-node name="Pipeline GetDescuentos">
+                                <con:request>request-get-descuentos-req</con:request>
+                                <con:response>response-get-descuentos-res</con:response>
+                            </con:pipeline-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:default-branch>
+                        <con:flow/>
+                    </con:default-branch>
+                </con:branch-table>
+            </con:branch-node>
+        </con:flow>
+        <con:partner-links>
+            <con:partner-link>
+                <con:service ref="Inn_Api_Servicios_Sel/BusinessServices/Inn_Servicios_Web_BS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            </con:partner-link>
+        </con:partner-links>
+    </con:router>
+</con:pipelineEntry>
